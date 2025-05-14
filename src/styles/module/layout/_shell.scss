@@ -1,0 +1,48 @@
+@use "../../config";
+
+#shell.shell {
+  height: 100svh;
+  width: 100%;
+  max-width: 100svw;
+  padding-top: config.$header-height;
+  padding-right: config.$sidebar-width;
+  overflow: hidden;
+}
+
+#shell.shell,
+.shell > .content {
+  position: relative;
+}
+
+#shell.shell,
+.shell > .header,
+.shell > .sidebar,
+.shell > .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.shell > .content {
+  flex: 1;
+}
+
+.shell > .header,
+.shell > .sidebar {
+  position: absolute;
+  right: 0;
+}
+
+.shell > .header {
+  top: 0;
+  left: 0;
+
+  & > .header-container {
+    height: config.$header-height;
+  }
+}
+
+.shell > .sidebar {
+  top: config.$header-height;
+  height: calc(100svh - config.$header-height);
+  width: config.$sidebar-width;
+}

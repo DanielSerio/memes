@@ -14,5 +14,5 @@ export interface BoxProps<C extends keyof HTMLElementTagNameMap>
   extends AreaHTMLAttributes<HTMLElementTagNameMap[C]>,
   ElmPadding,
   ElmMargin {
-  component: C;
+  component?: C;
 }

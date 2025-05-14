@@ -1,13 +1,13 @@
+import { Header, Page, Shell } from "./modules/Core/components";
+import { Sidebar } from "./modules/Sidebar/components";
+
 function App() {
   return (
-    <div id="shell" className="shell">
-      <main id="content" className="content">
-        <h1>App</h1>
-      </main>
-      <aside id="sidebar" className="sidebar">
-        <h2>Sidebar</h2>
-      </aside>
-    </div>
+    <Shell>
+      <Header />
+      <Page />
+      <Sidebar />
+    </Shell>
   );
 }
 
