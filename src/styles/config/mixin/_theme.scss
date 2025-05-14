@@ -1,0 +1,19 @@
+@mixin theme {
+  --background-color: var(--grey-15);
+  --text-color: var(--grey-80);
+
+  --anchor-color: var(--primary-70);
+  --anchor-visited-color: var(--accent-70);
+
+  color-scheme: dark;
+  background: var(--background-color);
+  color: var(--text-color);
+
+  a:not(:visited) {
+    color: var(--anchor-color);
+  }
+
+  &:visited {
+    color: var(--anchor-visited-color);
+  }
+}

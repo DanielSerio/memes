@@ -1,7 +1,7 @@
 @use "../func";
 
 @mixin _color-set($name) {
-  @for $i from 0 through 19 {
+  @for $i from 1 through 19 {
     $light: $i * 5;
 
     @if ($name == grey) {
