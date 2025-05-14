@@ -1,22 +1,46 @@
 @use "sass:map";
 @use "../var";
 
-@function _saturation($name, $light) {
+@function _get-saturation-params($name) {
   $max: map.get(var.$saturation-maxs, $name);
   $min: map.get(var.$saturation-mins, $name);
   $max-threshold: map.get(var.$saturation-max-thresholds, $name);
 
+  @return (min: $min, max: $max, threshold: $max-threshold);
+}
+
+@function _get-saturation($min, $max, $max-threshold, $light) {
   $distance-from-center: abs(50 - $light);
   $distance-from-threshold: abs($distance-from-center - $max-threshold);
-  $percent: $distance-from-threshold * 2;
+  $percent: calc(($distance-from-threshold * 2) / 100);
   $saturation-difference: $max - $min;
 
-  @return $min + ($saturation-difference * $percent);
+  @if ($distance-from-center >= $distance-from-threshold) {
+    @return $max;
+  }
+
+  @return $max - ($saturation-difference * $percent);
+}
+
+@function _saturation($name, $light) {
+  $params: _get-saturation-params($name);
+  $max: map.get($params, max);
+  $min: map.get($params, min);
+  $max-threshold: map.get($params, threshold);
+
+  @return _get-saturation($min, $max, $max-threshold, $light);
 }
 
 @function _color($name, $light, $alpha) {
   $hue: map.get(var.$hues, $name);
   $saturation: _saturation($name, $light);
+
+  @return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function grey($light, $alpha: 1) {
+  $hue: map.get(var.$hues, accent);
+  $saturation: _get-saturation(3, 12, 50, $light);
 
   @return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
 }

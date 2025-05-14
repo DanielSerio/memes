@@ -1,0 +1,27 @@
+@use "../func";
+
+@mixin _color-set($name) {
+  @for $i from 0 through 19 {
+    $light: $i * 5;
+
+    @if ($name == grey) {
+      --#{$name + ""}-#{$light}: #{func.grey($light)};
+    } @else if ($name == primary) {
+      --#{$name + ""}-#{$light}: #{func.primary($light)};
+    } @else if ($name == accent) {
+      --#{$name + ""}-#{$light}: #{func.accent($light)};
+    } @else if ($name == warning) {
+      --#{$name + ""}-#{$light}: #{func.warning($light)};
+    } @else if ($name == danger) {
+      --#{$name + ""}-#{$light}: #{func.danger($light)};
+    }
+  }
+}
+
+@mixin palette {
+  $colors: (grey, primary, accent, warning, danger);
+
+  @each $color in $colors {
+    @include _color-set($color);
+  }
+}
