@@ -23,6 +23,7 @@
 }
 
 .shell > .content {
+  z-index: 1;
   flex: 1;
 }
 
@@ -35,6 +36,7 @@
 .shell > .header {
   top: 0;
   left: 0;
+  z-index: 3;
 
   & > .header-container {
     height: config.$header-height;
@@ -42,6 +44,7 @@
 }
 
 .shell > .sidebar {
+  z-index: 2;
   top: config.$header-height;
   height: calc(100svh - config.$header-height);
   width: config.$sidebar-width;

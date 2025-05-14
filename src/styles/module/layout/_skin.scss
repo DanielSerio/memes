@@ -1,0 +1,15 @@
+#shell > .header,
+#shell > .sidebar {
+  background: var(--background-color);
+  border-style: solid;
+  border-width: 0;
+  border-color: var(--default-border-color);
+}
+
+#shell > .header {
+  border-bottom-width: 1px;
+}
+
+#shell > .sidebar {
+  border-left-width: 1px;
+}
