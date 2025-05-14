@@ -1,0 +1,27 @@
+$hues: (
+  primary: 157,
+  accent: 337,
+  warning: 37,
+  danger: 7,
+);
+
+$saturation-mins: (
+  primary: 80,
+  accent: 70,
+  warning: 85,
+  danger: 75,
+);
+
+$saturation-maxs: (
+  primary: 100,
+  accent: 100,
+  warning: 100,
+  danger: 100,
+);
+
+$saturation-max-thresholds: (
+  primary: 30,
+  accent: 40,
+  warning: 30,
+  danger: 40,
+);

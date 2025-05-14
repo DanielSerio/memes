@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "../var";
+
+@function _saturation($name, $light) {
+  $max: map.get(var.$saturation-maxs, $name);
+  $min: map.get(var.$saturation-mins, $name);
+  $max-threshold: map.get(var.$saturation-max-thresholds, $name);
+
+  $distance-from-center: abs(50 - $light);
+  $distance-from-threshold: abs($distance-from-center - $max-threshold);
+  $percent: $distance-from-threshold * 2;
+  $saturation-difference: $max - $min;
+
+  @return $min + ($saturation-difference * $percent);
+}
+
+@function _color($name, $light, $alpha) {
+  $hue: map.get(var.$hues, $name);
+  $saturation: _saturation($name, $light);
+
+  @return hsla($hue, $saturation * 1%, $light * 1%, $alpha);
+}
+
+@function primary($light, $alpha: 1) {
+  @return _color(primary, $light, $alpha);
+}
+
+@function accent($light, $alpha: 1) {
+  @return _color(accent, $light, $alpha);
+}
+
+@function warning($light, $alpha: 1) {
+  @return _color(warning, $light, $alpha);
+}
+
+@function danger($light, $alpha: 1) {
+  @return _color(danger, $light, $alpha);
+}
