@@ -7,9 +7,17 @@
   --anchor-color: var(--primary-70);
   --anchor-visited-color: var(--accent-70);
 
+  --selection-background-color: var(--primary-75);
+  --selection-color: var(--accent-5);
+
   color-scheme: dark;
   background: var(--background-color);
   color: var(--text-color);
+
+  ::selection {
+    background: var(--selection-background-color);
+    color: var(--selection-color);
+  }
 
   a:not(:visited) {
     color: var(--anchor-color);
