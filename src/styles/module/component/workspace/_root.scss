@@ -1,0 +1,23 @@
+.workspace {
+  display: flex;
+
+  &,
+  & > &-inner {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-inner {
+    position: relative;
+  }
+
+  .layer-set {
+    &,
+    & > canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
