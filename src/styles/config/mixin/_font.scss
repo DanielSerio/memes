@@ -1,0 +1,55 @@
+@function _local-to-rem($px) {
+  @return calc($px / 12) * 1rem;
+}
+@mixin font-sizing($font-scale: 1) {
+  $font-basis: 6 * $font-scale;
+  $line-basis: 9 * $font-scale;
+
+  $font-size-2xs: $font-basis * 1.5;
+  $font-size-xs: $font-basis * 2;
+  $font-size-sm: $font-basis * 2.5;
+  $font-size-md: $font-basis * 3;
+  $font-size-lg: $font-basis * 4;
+  $font-size-xl: $font-basis * 5;
+  $font-size-2xl: $font-basis * 6;
+  $font-size-3xl: $font-basis * 7;
+  $font-size-4xl: $font-basis * 8;
+  $font-size-5xl: $font-basis * 9;
+  $font-size-6xl: $font-basis * 10;
+
+  $line-height-2xs: $line-basis * 1.5;
+  $line-height-xs: $line-basis * 2;
+  $line-height-sm: $line-basis * 2.5;
+  $line-height-md: $line-basis * 3;
+  $line-height-lg: $line-basis * 4;
+  $line-height-xl: $line-basis * 5;
+  $line-height-2xl: $line-basis * 6;
+  $line-height-3xl: $line-basis * 7;
+  $line-height-4xl: $line-basis * 8;
+  $line-height-5xl: $line-basis * 9;
+  $line-height-6xl: $line-basis * 10;
+
+  --f-size-2xs: #{_local-to-rem($font-size-2xs)};
+  --f-size-xs: #{_local-to-rem($font-size-xs)};
+  --f-size-sm: #{_local-to-rem($font-size-sm)};
+  --f-size-md: #{_local-to-rem($font-size-md)};
+  --f-size-lg: #{_local-to-rem($font-size-lg)};
+  --f-size-xl: #{_local-to-rem($font-size-xl)};
+  --f-size-2xl: #{_local-to-rem($font-size-2xl)};
+  --f-size-3xl: #{_local-to-rem($font-size-3xl)};
+  --f-size-4xl: #{_local-to-rem($font-size-4xl)};
+  --f-size-5xl: #{_local-to-rem($font-size-5xl)};
+  --f-size-6xl: #{_local-to-rem($font-size-6xl)};
+
+  --l-height-2xs: #{_local-to-rem($line-height-2xs)};
+  --l-height-xs: #{_local-to-rem($line-height-xs)};
+  --l-height-sm: #{_local-to-rem($line-height-sm)};
+  --l-height-md: #{_local-to-rem($line-height-md)};
+  --l-height-lg: #{_local-to-rem($line-height-lg)};
+  --l-height-xl: #{_local-to-rem($line-height-xl)};
+  --l-height-2xl: #{_local-to-rem($line-height-2xl)};
+  --l-height-3xl: #{_local-to-rem($line-height-3xl)};
+  --l-height-4xl: #{_local-to-rem($line-height-4xl)};
+  --l-height-5xl: #{_local-to-rem($line-height-5xl)};
+  --l-height-6xl: #{_local-to-rem($line-height-6xl)};
+}
