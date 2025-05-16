@@ -1,6 +1,7 @@
 import type { SubmitHandler } from "react-hook-form";
 import { useDimensionsForm, type DimensionsValues } from "../../hooks/forms";
 import { useEffect } from "react";
+import { useWorkspaceContext } from "../../../Core/hooks/useWorkspaceState";
 
 export function DimensionsForm() {
   const {
@@ -8,6 +9,9 @@ export function DimensionsForm() {
     handleSubmit,
     formState: { errors, isValid, isDirty, defaultValues },
   } = useDimensionsForm();
+  const {
+    dimensionsController: [_, setDimensions],
+  } = useWorkspaceContext();
 
   useEffect(() => {
     const found = localStorage.getItem("dims");
@@ -18,7 +22,7 @@ export function DimensionsForm() {
   }, []);
 
   const onSubmit: SubmitHandler<DimensionsValues> = (data) => {
-    localStorage.setItem("dims", JSON.stringify(data));
+    setDimensions(data);
   };
 
   return (

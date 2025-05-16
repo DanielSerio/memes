@@ -1,5 +1,6 @@
 import {
   forwardRef,
+  useEffect,
   useRef,
   type ForwardedRef,
   type PropsWithChildren,
@@ -7,6 +8,7 @@ import {
 import { Box } from "../../Core/components";
 import { useLayerSet } from "../../Layer/hooks";
 import { Layer, LayerSet } from "../../Layer/components";
+import { useWorkspaceContext } from "../../Core/hooks/useWorkspaceState";
 
 function WorkspaceComponent(
   {}: PropsWithChildren,
@@ -15,16 +17,18 @@ function WorkspaceComponent(
   const parent = useRef<HTMLDivElement>(null);
   const imageLayerSet = useLayerSet({ parent });
   const textLayerSet = useLayerSet({ parent });
-
-  const stored = localStorage.getItem("dims");
-  const dims = stored ? JSON.parse(stored) : null;
+  const {
+    dimensionsController: [dims],
+  } = useWorkspaceContext();
 
   return (
     <Box className="workspace" ref={ref}>
       <div
         className="workspace-inner"
         style={
-          dims ? { ...dims, maxWidth: dims.width, margin: "0 auto" } : null
+          dims
+            ? { ...dims, maxWidth: dims.width, margin: "24px auto" }
+            : undefined
         }
         ref={parent}
       >
